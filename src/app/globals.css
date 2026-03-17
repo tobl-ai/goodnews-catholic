@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+:root {
+  /* Cathedral Brick palette */
+  --color-amber: #b86e3f;
+  --color-amber-light: #d4a07a;
+  --color-amber-dim: #8c5230;
+  --color-ink: #1c1410;
+  --color-ink-soft: #2a1f18;
+  --color-ink-muted: #3d2e24;
+  --color-cream: #f7f2ec;
+  --color-cream-dark: #ebe3d9;
+  --color-stone: #8a7b6f;
+  --color-stone-light: #b5a899;
+  --color-brick: #a0522d;
+  --color-brick-light: #c47a52;
+  --color-brick-dark: #7a3d1e;
+  --color-mortar: #e8ddd0;
+  --color-liturgical-purple: #6b3fa0;
+  --color-liturgical-red: #b22222;
+  --color-liturgical-green: #2e6b30;
+  --background: #f7f2ec;
+  --foreground: #1c1410;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-noto-sans-kr);
+  --font-display: var(--font-playfair);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-noto-sans-kr), "Pretendard", sans-serif;
+}
+
+/* Subtle stone texture overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-cream); }
+::-webkit-scrollbar-thumb { background: var(--color-stone-light); border-radius: 3px; }
+
+/* Animations */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@theme inline {
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-fade-up: fadeUp 0.6s ease-out both;
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+::selection {
+  background: var(--color-brick);
+  color: white;
+}
