@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-const API_KEY = "AIzaSyBGKyzEZCAdbBqKBwi41SgWLmmrQ2w96x8";
+const API_KEY = process.env.GEMINI_API_KEY || "";
 const OUTPUT_DIR = path.join(__dirname, "../public/images/logos");
 const REF_IMAGE = path.join(OUTPUT_DIR, "logo-ai-3.png");
 

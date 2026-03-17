@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-const API_KEY = "AIzaSyBGKyzEZCAdbBqKBwi41SgWLmmrQ2w96x8";
+const API_KEY = process.env.GEMINI_API_KEY || "";
 const OUTPUT_DIR = path.join(__dirname, "../public/images/banners");
 
 const prompt = `A beautiful photograph of the real Myeongdong Cathedral (명동대성당) in Seoul, South Korea. This is a famous neo-Gothic red brick Catholic cathedral with a tall central spire. Show the actual cathedral's distinctive architecture: red brick facade, pointed arches, rose window, and the iconic tall bell tower. Golden hour sunset lighting. Korean Catholic youth in casual clothes gathered peacefully in the stone plaza in front of the cathedral. Some holding small Catholic cross banners and Korean flags. NO rainbow flags, NO pride flags. Only Catholic and Korean symbols. Text banners reading WYD 2027. Warm golden amber sunset tones. Professional architectural photography, wide angle, 16:9 aspect ratio.`;
